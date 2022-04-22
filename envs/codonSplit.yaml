@@ -1,0 +1,8 @@
+name: codonSplit
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - pandas
+  - biopython
+prefix: /home/gs69042/.conda/envs/codonSplit

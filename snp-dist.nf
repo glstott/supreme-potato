@@ -72,6 +72,30 @@ process mafft{
 
 }
 
+// Split codons 
+process codonsplit {
+    conda "$workflow.projectDir/envs/codonSplit.yaml"
+    publishDir = temp_out_dir
+
+    // Set slurm options.
+    cpus threads 
+    memory mem
+    time "6h"
+    queue "batch"
+    clusterOptions "--ntasks $threads"
+
+    input:
+    file fasta
+
+    output:
+    file ("${fasta.simpleName}.12.fasta", "${fasta.simpleName}.3.fasta" ) into splitFasta
+
+    script: 
+    """
+    python3 scripts/codonSplit.py $fasta ${fasta.simpleName}.12.fasta ${fasta.simpleName}.3.fasta
+    """
+}
+
 // Calculate SNP Distance
 process snpDist {
     // Initialize environment in conda
@@ -88,14 +112,14 @@ process snpDist {
     publishDir = out_dir
 
     input:
-    path alignedFasta
+    file splitFasta
 
     output:
-    path "${alignedFasta.simpleName}.snpdist.csv"
+    file "${splitFasta.simpleName}.snpdist.csv"
 
     script:
     """
-    snp-dists -m -c $alignedFasta > "${alignedFasta.simpleName}.snpdist.csv"
+    snp-dists -m -c $splitFasta > "${splitFasta.simpleName}.snpdist.csv"
     """
 
 }
