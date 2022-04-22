@@ -1,0 +1,8 @@
+name: snp-dist
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - snp-dists
+prefix: /home/gs69042/.conda/envs/snp-dist
