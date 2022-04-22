@@ -85,7 +85,7 @@ process snpDist {
     clusterOptions "--ntasks $threads"
     
     // Establish output directory
-    publishDir = temp_out_dir
+    publishDir = out_dir
 
     input:
     path alignedFasta
