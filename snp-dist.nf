@@ -67,7 +67,7 @@ process mafft{
     // Add new fragments to the existing alignment set by the original wuhan sequence.
     script:
     """
-    mafft --6merpair --thread ${threads} --addfragments ${fasta} $input_dir/../EPI_ISL_402124.fasta > ${fasta.simpleName}.aligned.fasta
+    mafft --6merpair --thread ${threads} --addfragments ${fasta} /scratch/gs69042/PMeND/data/EPI_ISL_402124.fasta > ${fasta.simpleName}.aligned.fasta
     """
 
 }
@@ -85,14 +85,14 @@ process codonsplit {
     clusterOptions "--ntasks $threads"
 
     input:
-    file fasta
+    file fasta from alignedFasta
 
     output:
-    file ("${fasta.simpleName}.12.fasta", "${fasta.simpleName}.3.fasta" ) into splitFasta
+    file ("${fasta.simpleName}.split*.fasta" ) into splitFasta
 
     script: 
     """
-    python3 scripts/codonSplit.py $fasta ${fasta.simpleName}.12.fasta ${fasta.simpleName}.3.fasta
+    python3 /scratch/gs69042/supreme-potato/scripts/codonSplit.py $fasta ${fasta.simpleName}.split12.fasta ${fasta.simpleName}.split3.fasta
     """
 }
 
@@ -109,10 +109,10 @@ process snpDist {
     clusterOptions "--ntasks $threads"
     
     // Establish output directory
-    publishDir = out_dir
+    publishDir = output_dir
 
     input:
-    file splitFasta
+    file splitFasta from splitFasta
 
     output:
     file "${splitFasta.simpleName}.snpdist.csv"
