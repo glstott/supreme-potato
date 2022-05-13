@@ -1,4 +1,5 @@
 #!/usr/bin/env nextflow
+nextflow.enable.dsl=2
 // Authors: Garrick Stott
 // Purpose: Nextflow pipe to generate snp-distances from raw fastas
 
@@ -39,10 +40,6 @@ if (params.threads != null){
     threads = params.threads
 }
 
-// Input fasta files for tree building process
-input_files = Channel.fromPath( "$input_dir*.fasta" )
-log.info "List of files to be used: \n$input_files\n"
-
 // Align fasta sequences to a reference strain (Original Wuhan sequence) with MAFFT
 process mafft{
     // Initialize environment in conda
@@ -59,10 +56,10 @@ process mafft{
     publishDir = temp_out_dir
     
     input:
-    file fasta from input_files
+    path fasta
     
     output:
-    file("${fasta.simpleName}.aligned.fasta") into alignedFasta
+    path "${fasta.simpleName}.aligned.fasta"
     
     // Add new fragments to the existing alignment set by the original wuhan sequence.
     script:
@@ -85,10 +82,10 @@ process codonsplit {
     clusterOptions "--ntasks $threads"
 
     input:
-    file fasta from alignedFasta
+    path fasta
 
     output:
-    file ("${fasta.simpleName}.split*.fasta" ) into splitFasta
+    path "${fasta.simpleName}.split*.fasta" 
 
     script: 
     """
@@ -112,14 +109,25 @@ process snpDist {
     publishDir = output_dir
 
     input:
-    file splitFasta from splitFasta
+    path splitFasta
 
     output:
-    file "${splitFasta.simpleName}.snpdist.csv"
+    path "${splitFasta.simpleName}.snpdist.csv"
 
     script:
     """
     snp-dists -m -c $splitFasta > "${splitFasta.simpleName}.snpdist.csv"
     """
 
+}
+
+workflow hammingDistance12_3 {
+    // Input fasta files for tree building process
+    input_files = Channel.fromPath( "$input_dir*.fasta" )
+    log.info "List of files to be used: \n$input_files\n"
+
+    // Standard process for generating hamming distances at positions 1+2 and 3
+    mafft(input_files)
+    codonSplit(mafft.out)
+    snpDist(codonSplit.out)
 }
