@@ -7,8 +7,6 @@ nextflow.enable.dsl=2
 log.info """ 
     SNP distance
 =============================
-A graph database which enables storage of phylogenies as 
-Tree Aligned Graphs (TAGs) and integrates these data with sample metadata. 
 Project : $workflow.projectDir
 Git info: $workflow.repository - $workflow.revision [$workflow.commitId]
 Cmd line: $workflow.commandLine
@@ -43,7 +41,7 @@ if (params.threads != null){
 // Align fasta sequences to a reference strain (Original Wuhan sequence) with MAFFT
 process mafft{
     // Initialize environment in conda
-    conda "$workflow.projectDir/envs/mafft.yaml"
+    // conda "mafft"
 
     // Set slurm options.
     cpus threads 
@@ -53,7 +51,7 @@ process mafft{
     clusterOptions "--ntasks $threads"
     
     // Establish output directory
-    publishDir = temp_out_dir
+//    publishDir = out_dir
     
     input:
     path fasta
@@ -72,7 +70,6 @@ process mafft{
 // Split codons 
 process codonsplit {
     conda "$workflow.projectDir/envs/codonSplit.yaml"
-    publishDir = temp_out_dir
 
     // Set slurm options.
     cpus threads 
@@ -121,13 +118,13 @@ process snpDist {
 
 }
 
-workflow hammingDistance12_3 {
+workflow {
     // Input fasta files for tree building process
     input_files = Channel.fromPath( "$input_dir*.fasta" )
     log.info "List of files to be used: \n$input_files\n"
 
     // Standard process for generating hamming distances at positions 1+2 and 3
     mafft(input_files)
-    codonSplit(mafft.out)
-    snpDist(codonSplit.out)
+    codonsplit(mafft.out)
+    snpDist(codonsplit.out)
 }
