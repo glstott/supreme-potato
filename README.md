@@ -17,4 +17,5 @@ Note: Alignment is still a sticking point. Runs well when MAFFT is loaded as a m
 tar -xvf *.tar
 for file in `ls data/Delta_20220524_linked/ids/`; do cat data/Delta_20220524_linked/ids/$file | tr -d '"' > data/Delta_20220524_linked/ids/rev_$file;  done
 for file in `ls data/Delta_20220524_linked/ids/`; do seqkit grep -f data/Delta_20220524_linked/ids/$file /home/gs69042/data/GISAID/TX_Delta_HighCoverage_20210301-20211101/merged.aligned.fasta > data/Delta_20220524_linked/fasta/$file.fasta;  done
+for file in `ls data/Delta_20220524_linked/ids/`; do grep ">" data/Delta_20220524_linked/fasta/$file | tr -d ">" | grep data/Delta_20220524_linked/dates/$file > data/Delta_20220524_linked/fasta/$file.fasta;  done
 ```
