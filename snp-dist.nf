@@ -1,5 +1,6 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
+process.executor = "slurm"
 // Authors: Garrick Stott
 // Purpose: Nextflow pipe to generate snp-distances from raw fastas
 
