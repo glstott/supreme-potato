@@ -24,8 +24,8 @@ process untar_GISAID {
     path tar
 
     output:
-    path "${tar.simpleName}.fasta"
-    path "${tar.simpleName}.metadata.tsv"
+    path "${tar.simpleName}.fasta", emit: raw_fasta
+    path "${tar.simpleName}.metadata.tsv", emit: raw_tsv
 
     script:
     """
@@ -41,8 +41,8 @@ process collect_GISAID {
     path tsv
 
     output:
-    path "combined.fasta"
-    path "combined.metadata.tsv"
+    path "combined.fasta", emit: collected_fasta
+    path "combined.metadata.tsv", emit: collected_tsv
 
     script:
     """
@@ -61,9 +61,9 @@ process epiweek_split {
     path "${fasta.simpleName}.metadata.tsv"
 
     output:
-    path "*.fasta" into prepped_fasta
-    path "*.dt.tsv" into dates_tsv
-    path "*.metadata.tsv" into metadata_tsv
+    path "*.fasta" 
+    path "*.dt.tsv"
+    path "*.metadata.tsv" 
 
     script:
     """
@@ -76,8 +76,8 @@ workflow {
     log.info "List of files to be used: \n$input_files\n"
     
     untar_GISAID(input_files)
-    collect_GISAID(untar_GISAID.out.collect())
-    epiweek_split(collect_GISAID.out)
+    collect_GISAID(untar_GISAID.out.raw_fasta.collect(), untar_GISAID.out.raw_tsv.collect())
+    epiweek_split(collect_GISAID.out.collected_fasta, collect_GISAID.out.collected_tsv)
     
     
 }
