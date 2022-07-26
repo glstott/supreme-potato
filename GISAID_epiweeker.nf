@@ -54,7 +54,7 @@ process collect_GISAID {
 // Split data by epiweek and generate files for IQT
 process epiweek_split {
     publishDir = output_dir
-    conda "-c bioconda epiweeks pandas biopython"
+    conda "-c bioconda epiweeks pandas biopython python=3.8"
 
     input:
     path fasta
