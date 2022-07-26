@@ -67,7 +67,7 @@ process epiweek_split {
 
     script:
     """
-    python $workflow.projectDir/epiweeker.py ${fasta.simpleName}.metadata.tsv $fasta 
+    python $workflow.projectDir/scripts/epiweeker.py ${fasta.simpleName}.metadata.tsv $fasta 
     """
 }
 
