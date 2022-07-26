@@ -12,6 +12,20 @@ Note: Alignment is still a sticking point. Runs well when MAFFT is loaded as a m
 * Not the fastest way to do this, but useful script.
 * Written in DSL2 to enable loading as a module in other pipelines, e.g. PMeND.
 
+## GISAID_epiweeker.nf
+
+* Simple NF script using DSL2. This workflow will take a directory of tarballs, merge them into a massive FASTA and TSV file, then split them by epiweek (cumulative). 
+
+```
+ml Nextflow
+ml Miniconda3
+./../nextflow GISAID_epiweeker.nf --input ../test_tar --temp_out_dir ../temp_out --output_dir ../out
+```
+
+
+
+## Other gists
+
 
 ```
 tar -xvf *.tar
