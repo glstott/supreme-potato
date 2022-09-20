@@ -6,6 +6,10 @@ from datetime import date, datetime
 
 file = str(sys.argv[1])
 file2 = str(sys.argv[2])
+if len(sys.argv) > 3:
+	minThreshold = sys.argv[3]
+else:
+	minThreshold = 1
 prefix = file[:-13]
 df = pd.read_csv(file, sep='\t')
 mode='cumulative'
@@ -18,7 +22,7 @@ for epiweek in df.epiweek.unique():
     else:
         temp_df = df.loc[df.epiweek == epiweek, :]
     
-    if temp_df.strain.count() < 100:
+    if temp_df.strain.count() < minThreshold:
         continue
     
     temp_df.loc[:, ['strain', 'date']].to_csv(prefix + "_" +str(epiweek)+".dt.tsv", index=False, sep='\t', header=False)

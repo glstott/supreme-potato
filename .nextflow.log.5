@@ -1,0 +1,54 @@
+Sep-20 10:36:07.102 [main] DEBUG nextflow.cli.Launcher - $> nextflow GISAID_epiweeker.nf --input /home/gs69042/data/GISAID/TX_Delta_HighCoverage_20210301-2021110 --temp_out_dir ../temp_out --output_dir ../out
+Sep-20 10:36:07.202 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.5
+Sep-20 10:36:07.343 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Sep-20 10:36:07.398 [main] INFO  nextflow.cli.CmdRun - Launching `GISAID_epiweeker.nf` [naughty_sax] DSL2 - revision: 2adf9ae151
+Sep-20 10:36:07.433 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/home/gs69042/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
+Sep-20 10:36:07.435 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-20 10:36:07.453 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-20 10:36:07.454 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-20 10:36:07.458 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Sep-20 10:36:07.472 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-20 10:36:07.542 [main] DEBUG nextflow.Session - Session uuid: 97826ab0-1ae2-4c60-8bb4-d13178ff9ae5
+Sep-20 10:36:07.542 [main] DEBUG nextflow.Session - Run name: naughty_sax
+Sep-20 10:36:07.545 [main] DEBUG nextflow.Session - Executor pool size: 2
+Sep-20 10:36:07.583 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.04.5 build 5708
+  Created: 15-07-2022 16:09 UTC (12:09 EDT)
+  System: Linux 3.10.0-1160.36.2.el7.x86_64
+  Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 13.0.2+8
+  Encoding: UTF-8 (UTF-8)
+  Process: 131284@c4-20.compute.lan [10.2.1.91]
+  CPUs: 1 - Mem: 187.5 GB (149 GB) - Swap: 0 (0)
+Sep-20 10:36:07.627 [main] DEBUG nextflow.Session - Work-dir: /scratch/gs69042/supreme-potato/work [lustre]
+Sep-20 10:36:07.628 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /scratch/gs69042/supreme-potato/bin
+Sep-20 10:36:07.636 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-20 10:36:07.699 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-20 10:36:07.736 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-20 10:36:07.750 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 2; maxThreads: 1000
+Sep-20 10:36:09.129 [main] DEBUG nextflow.Session - Session start invoked
+Sep-20 10:36:10.297 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-20 10:36:10.399 [main] INFO  nextflow.Nextflow - List of files to be used: 
+DataflowBroadcast around DataflowStream[?]
+
+Sep-20 10:36:10.466 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-20 10:36:10.466 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-20 10:36:10.471 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-20 10:36:10.480 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=1; memory=187.5 GB; capacity=1; pollInterval=100ms; dumpInterval=5m
+Sep-20 10:36:10.652 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-20 10:36:10.652 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-20 10:36:10.663 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-20 10:36:10.664 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-20 10:36:10.672 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: untar_GISAID, epiweek_split, collect_GISAID
+Sep-20 10:36:10.672 [main] DEBUG nextflow.Session - Ignite dataflow network (4)
+Sep-20 10:36:10.686 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > untar_GISAID
+Sep-20 10:36:10.687 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > collect_GISAID
+Sep-20 10:36:10.687 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > epiweek_split
+Sep-20 10:36:10.691 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Sep-20 10:36:10.691 [main] DEBUG nextflow.Session - Session await
+Sep-20 10:36:10.697 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/gs69042/data/GISAID/TX_Delta_HighCoverage_20210301-2021110/; pattern: *.tar; options: [:]
+Sep-20 10:36:10.705 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - No such file: /home/gs69042/data/GISAID/TX_Delta_HighCoverage_20210301-2021110/ -- Skipping visit
+Sep-20 10:36:10.725 [main] DEBUG nextflow.Session - Session await > all process finished
+Sep-20 10:36:10.803 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-20 10:36:10.808 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Sep-20 10:36:11.166 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-20 10:36:11.186 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

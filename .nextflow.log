@@ -1,0 +1,62 @@
+Sep-20 11:03:22.302 [main] DEBUG nextflow.cli.Launcher - $> nextflow GISAID_epiweeker.nf --input /home/gs69042/data/contact_tracing_available/ --temp_out_dir ../temp_out/ --output_dir ../out -resume
+Sep-20 11:03:22.442 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.5
+Sep-20 11:03:22.562 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Sep-20 11:03:22.590 [main] INFO  nextflow.cli.CmdRun - Launching `GISAID_epiweeker.nf` [compassionate_solvay] DSL2 - revision: 2adf9ae151
+Sep-20 11:03:22.608 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/home/gs69042/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
+Sep-20 11:03:22.609 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-20 11:03:22.627 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-20 11:03:22.629 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-20 11:03:22.632 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Sep-20 11:03:22.646 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-20 11:03:22.708 [main] DEBUG nextflow.Session - Session uuid: 8e0c8830-8e35-4ec0-9270-b80a10b4ebed
+Sep-20 11:03:22.708 [main] DEBUG nextflow.Session - Run name: compassionate_solvay
+Sep-20 11:03:22.710 [main] DEBUG nextflow.Session - Executor pool size: 2
+Sep-20 11:03:22.750 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.04.5 build 5708
+  Created: 15-07-2022 16:09 UTC (12:09 EDT)
+  System: Linux 3.10.0-1160.36.2.el7.x86_64
+  Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 13.0.2+8
+  Encoding: UTF-8 (UTF-8)
+  Process: 137473@c4-16.compute.lan [10.2.1.87]
+  CPUs: 1 - Mem: 187.5 GB (148.5 GB) - Swap: 0 (0)
+Sep-20 11:03:22.801 [main] DEBUG nextflow.Session - Work-dir: /scratch/gs69042/supreme-potato/work [lustre]
+Sep-20 11:03:22.801 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /scratch/gs69042/supreme-potato/bin
+Sep-20 11:03:22.809 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-20 11:03:22.820 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-20 11:03:22.855 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-20 11:03:22.869 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 2; maxThreads: 1000
+Sep-20 11:03:22.979 [main] DEBUG nextflow.Session - Session start invoked
+Sep-20 11:03:24.231 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-20 11:03:24.331 [main] INFO  nextflow.Nextflow - List of files to be used: 
+DataflowBroadcast around DataflowStream[?]
+
+Sep-20 11:03:24.391 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-20 11:03:24.391 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-20 11:03:24.396 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-20 11:03:24.405 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=1; memory=187.5 GB; capacity=1; pollInterval=100ms; dumpInterval=5m
+Sep-20 11:03:24.548 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-20 11:03:24.548 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-20 11:03:24.562 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-20 11:03:24.562 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-20 11:03:24.572 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: untar_GISAID, epiweek_split, collect_GISAID
+Sep-20 11:03:24.572 [main] DEBUG nextflow.Session - Ignite dataflow network (4)
+Sep-20 11:03:24.578 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > untar_GISAID
+Sep-20 11:03:24.582 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > collect_GISAID
+Sep-20 11:03:24.583 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > epiweek_split
+Sep-20 11:03:24.583 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Sep-20 11:03:24.584 [main] DEBUG nextflow.Session - Session await
+Sep-20 11:03:24.591 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/gs69042/data/contact_tracing_available/; pattern: *.tar; options: [:]
+Sep-20 11:03:24.835 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [d0/23ac40] Cached process > untar_GISAID (1)
+Sep-20 11:03:24.837 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [9a/787422] Cached process > untar_GISAID (2)
+Sep-20 11:03:24.926 [Actor Thread 2] INFO  nextflow.processor.TaskProcessor - [fb/352360] Cached process > collect_GISAID
+Sep-20 11:03:25.023 [Actor Thread 8] DEBUG nextflow.conda.CondaCache - conda found local env for environment=-c bioconda epiweeks pandas biopython python=3.8; path=/scratch/gs69042/supreme-potato/work/conda/env-271707e95c8f727746d4c8a95f2c9ac9
+Sep-20 11:03:25.072 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-20 11:03:25.075 [Task submitter] INFO  nextflow.Session - [e3/eca5f9] Submitted process > epiweek_split
+Sep-20 11:08:24.534 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: epiweek_split; status: RUNNING; exit: -; error: -; workDir: /scratch/gs69042/supreme-potato/work/e3/eca5f9861fa324d191eac4547b2608]
+Sep-20 11:11:18.209 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: epiweek_split; status: COMPLETED; exit: 0; error: -; workDir: /scratch/gs69042/supreme-potato/work/e3/eca5f9861fa324d191eac4547b2608]
+Sep-20 11:11:18.678 [main] DEBUG nextflow.Session - Session await > all process finished
+Sep-20 11:11:18.686 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-20 11:11:18.692 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=1; failedCount=0; ignoredCount=0; cachedCount=3; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=7m 53s; failedDuration=0ms; cachedDuration=1.1s;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Sep-20 11:11:18.883 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-20 11:11:18.893 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
