@@ -15,11 +15,13 @@ Note: Alignment is still a sticking point. Runs well when MAFFT is loaded as a m
 ## GISAID_epiweeker.nf
 
 * Simple NF script using DSL2. This workflow will take a directory of tarballs, merge them into a massive FASTA and TSV file, then split them by epiweek (cumulative). 
+* Note: For now, important to omit the forward slash at the end of each directory statement. I may have included manual pathing which will break otherwise. 
 
+### Example use on Sapelo2:
 ```
 ml Nextflow
 ml Miniconda3
-./../nextflow GISAID_epiweeker.nf --input ../test_tar --temp_out_dir ../temp_out --output_dir ../out
+nextflow GISAID_epiweeker.nf --input /path/to/input_directory --temp_out_dir /path/to/temp_out_directory --output_dir /path/to/output_directory
 ```
 
 
