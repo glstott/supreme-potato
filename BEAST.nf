@@ -101,7 +101,7 @@ workflow {
     
     untar_GISAID(input_files)
     collect_GISAID(untar_GISAID.out.raw_fasta.collect(), untar_GISAID.out.raw_tsv.collect())
-    epiweek_split(collect_GISAID.out.collected_fasta, collect_GISAID.out.collected_tsv)
-    
+    // epiweek_split(collect_GISAID.out.collected_fasta, collect_GISAID.out.collected_tsv)
+    beast_xml_from_beautier(collect_GISAID.out.collected_fasta)
     
 }
