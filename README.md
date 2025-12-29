@@ -25,7 +25,6 @@ nextflow GISAID_epiweeker.nf --input /path/to/input_directory --temp_out_dir /pa
 ```
 
 
-
 ## Other gists
 
 
@@ -34,4 +33,11 @@ tar -xvf *.tar
 for file in `ls data/Delta_20220524_linked/ids/`; do cat data/Delta_20220524_linked/ids/$file | tr -d '"' > data/Delta_20220524_linked/ids/rev_$file;  done
 for file in `ls data/Delta_20220524_linked/ids/`; do seqkit grep -f data/Delta_20220524_linked/ids/$file /home/gs69042/data/GISAID/TX_Delta_HighCoverage_20210301-20211101/merged.aligned.fasta > data/Delta_20220524_linked/fasta/$file.fasta;  done
 for file in `ls data/Delta_20220524_linked/ids/`; do grep ">" data/Delta_20220524_linked/fasta/$file | tr -d ">" | grep data/Delta_20220524_linked/dates/$file > data/Delta_20220524_linked/fasta/$file.fasta;  done
+```
+
+
+### Filtering for a specific gene segment
+
+```
+cat gisaid_A_2013.fasta | seqkit grep -r -p "NA"
 ```
