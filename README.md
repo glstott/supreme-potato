@@ -39,5 +39,5 @@ for file in `ls data/Delta_20220524_linked/ids/`; do grep ">" data/Delta_2022052
 ### Filtering for a specific gene segment
 
 ```
-cat gisaid_A_2013.fasta | seqkit grep -r -p "NA"
+cat gisaid_A_2013.fasta | seqkit grep -n -r -p "\|NA\|"
 ```
